@@ -1,0 +1,59 @@
+@charset "UTF-8";
+
+#wrapper_menu {
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+}
+
+.form_input_search {
+	height: 100%;
+}
+
+.form_button {
+	padding: .3rem .6rem !important;
+}
+
+#wrapper_menu>table{
+	min-width: 95%;
+	max-width: 95%;
+	margin: 0 1rem;
+	border-spacing: 0;
+}
+
+#wrapper_menu>table>thead>tr>td{
+	padding: 1rem 0;
+	text-align: center;
+	font-weight: 600;
+	text-transform: uppercase;
+	color: white;
+	background-color: #2654D6;
+}
+
+#wrapper_menu>table>thead>tr>td:first-child {
+	max-width: 5vh;
+}
+
+#wrapper_menu>table>tbody>tr>td{
+	padding: .5rem 0;
+}
+
+#wrapper_menu>table>tbody>tr>td:nth-of-type(2){
+	max-width: 25vh;
+}
+
+#wrapper_menu>table>tbody>tr>td{
+	text-align: center;
+}
+
+#wrapper_menu>table>tbody>tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+#model>div>label {
+    width: 25vh !important;
+}
+
+#model>div>input{
+	text-align: center;
+}

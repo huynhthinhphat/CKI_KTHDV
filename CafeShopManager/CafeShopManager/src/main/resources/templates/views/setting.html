@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Cài đặt</title>
+<link rel="stylesheet" type="text/css" href="/css/style.css">
+<link rel="stylesheet" type="text/css" href="/css/header.css">
+<link rel="stylesheet" type="text/css" href="/css/menuLeft.css">
+<link rel="stylesheet" type="text/css" href="/css/formDefault.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="/js/index.js"></script>
+<script src="/js/setting.js"></script>
+<style>
+	#wrapper_menu>div:not(#wrapper_title_search) {
+		display: flex;
+		padding: 1rem;
+	}
+	
+	#wrapper_menu>div>p{
+		width: 30vh;
+	}
+	
+	#wrapper_menu>div>p:first-child {
+		font-weight: 600;
+	}
+</style>
+</head>
+<body>
+	<div id="container">
+		<div th:replace="views/menuLeft"></div>
+		<div id="container_header_body">
+			<div th:replace="views/header"></div>
+				<div id="wrapper">
+					<div id="wrapper_menu">
+						<div id="wrapper_title_search">
+							<h2>Cài đặt</h2>
+						</div>
+						<div>
+							<p>Tỉ lệ đổi điểm</p>
+							<p>10.000đ/1 điểm</p>
+						</div>
+						<div>
+							<p>Tỉ lệ thanh toán điểm</p>
+							<p>1 điểm/1.000đ</p>
+						</div>
+						<div>
+							<button id="btn_reset" class="form_button">Reset điểm và tổng tiền</button>
+						</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

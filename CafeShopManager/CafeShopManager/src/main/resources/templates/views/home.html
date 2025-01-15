@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Trang chủ</title>
+<link rel="stylesheet" type="text/css" href="/css/style.css">
+<link rel="stylesheet" type="text/css" href="/css/home.css">
+<link rel="stylesheet" type="text/css" href="/css/menuLeft.css">
+<link rel="stylesheet" type="text/css" href="/css/header.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="/js/index.js"></script>
+<script src="/js/home.js"></script>
+</head>
+<body>
+	<div id="container">
+		<div th:replace="views/menuLeft"></div>
+		<div id="container_header_body">
+			<div th:replace="views/header"></div>
+			<div id="wrapper">
+				<div id="wrapper_menu">
+					<div id="wrapper_title_search">
+						<h2>Trang chủ</h2>
+						<input type="text" id="timkiem_trangchu" class="form_input_search" placeholder="Tìm theo tên...">
+					</div>
+					<div>
+						<div id="wrapper_category">
+							<button class="item_category" th:each="item : ${category}" th:attr='maDanhMuc=${item.getMaDanhMuc()}' th:text='${item.getTenDanhMuc()}'></button>
+						</div>
+						<div id="wrapper_item_menu"></div>
+					</div>
+				</div>
+				<div id="wrapper_order">
+					<div id="infor_shop">
+						<h3 id="name_bill" th:text="'Phiếu thanh toán số ' + ${no}"></h3>
+					</div>
+					<div id="infor_order">
+						<div>
+							<p>Tên khách hàng: </p>
+							<p id="order_customer"></p>
+						</div>
+						<div>
+							<p>Điểm tích lũy hiện tại: </p>
+							<p id="order_pointer_current">0</p>
+						</div>
+						<div>
+							<p>Điểm tích lũy nhận được: </p>
+							<p id="order_pointer_receive"></p>
+						</div>
+						<div>
+							<p>Điểm thanh toán: </p>
+							<input type="number" id="order_pointer_pay">
+						</div>
+						<div id="wrapper_bill">
+							<table id="table_infor">
+								<thead>
+									<tr>
+										<td style="width: 18vh">Tên món</td>
+										<td style="text-align: center">Số lượng</td>
+										<td style="text-align: center">Giá</td>
+										<td style="text-align: end">Tổng tiền</td>
+									</tr>
+								</thead>
+								<tbody id="tbody_infor">
+								</tbody>
+							</table>
+						</div>
+						<div>
+							<p>Tổng tiền: </p>
+							<p style="font-weight: 600" id="totalAmount"></p>
+						</div>
+						<div>
+							<p>Tổng tiền cần trả: </p>
+							<p style="font-weight: 600" id="totalAmountCurrent"></p>
+						</div>
+						<div>
+							<button id="btn_check_user" class="form_button"><i class="fa-solid fa-user-check"></i></button>
+							<button id="btn_delete_bill" class="form_button">Làm sạch</button>
+							<button id="btn_pay" class="form_button">Thanh toán</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div id="model_check_customer" class="model">
+		<div id="model">
+			<button id="btn_close_model" class="form_button_close">X</button>
+			<div>
+				<label for="sodt">Số điện thoại: </label>
+				<input type="text" id="sodt" placeholder="Nhập số điện thoại">
+			</div>
+			<div>
+				<label for="tenkhachhang">Họ và tên: </label>
+				<input type="text" id="tenkhachhang" placeholder="Nhập họ tên khách hàng">
+			</div>
+			<div>
+				<button id="btn_check_customer" class="form_button">Kiểm tra khách hàng</button>
+				<button style="display: none" id="btn_add_customer" class="form_button">Thêm khách hàng</button>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

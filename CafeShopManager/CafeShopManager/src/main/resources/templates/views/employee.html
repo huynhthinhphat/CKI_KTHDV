@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Nhân viên</title>
+<link rel="stylesheet" type="text/css" href="/css/style.css">
+<link rel="stylesheet" type="text/css" href="/css/header.css">
+<link rel="stylesheet" type="text/css" href="/css/menuLeft.css">
+<link rel="stylesheet" type="text/css" href="/css/formDefault.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="/js/index.js"></script>
+<script src="/js/employee.js"></script>
+<style>
+	#wrapper_category {
+		width: 80%;
+    	grid-template-columns: repeat(6, 1fr);
+	}
+	
+	table{
+		margin-top: 1rem !important;
+	}
+	
+	.item_category:active {
+    	transform: scale(1);
+	}
+	
+	.item_category{
+		text-align: center;
+		position: relative;
+		max-height: 6vh;
+	}
+	
+	.item_category:hover{
+		color: black;
+		background-color: white;
+	}
+	
+	.item_category>button{
+		position: absolute;
+		cursor: pointer;
+		border: none;
+		top: .6rem;
+		right: 1rem;
+		width: 2.5vh;
+		height: 2.5vh;
+		color: white;
+		background-color: #2654D6;
+		border-radius: 100%;
+		transition: .1s;
+	}
+	
+	.item_category>button:hover{
+		background-color: #D64646;
+	}
+	
+	.item_category>button:active{
+		transform: scale(0.9);
+	}
+	
+	tbody>tr>td:nth-of-type(2){
+		max-width: 10vh;
+	}
+
+	.item_img>img{
+		width: 10vh;
+		height: 10vh;
+		object-fit: cover;
+	}
+	
+	#model>p{
+		font-weight: 600;
+		margin-bottom: .2rem;
+		text-align: center;
+	}
+	
+	#model>div {
+    	justify-content: space-between;
+    }
+</style>
+</head>
+<body>
+	<div id="container">
+		<div th:replace="views/menuLeft"></div>
+		<div id="container_header_body">
+			<div th:replace="views/header"></div>
+				<div id="wrapper">
+					<div id="wrapper_menu">
+						<div id="wrapper_title_search">
+							<h2>Nhân viên</h2>
+							<div>
+								<input type="text" id="timkiem_nhanvien" class="form_input_search" placeholder="Tìm kiếm...">
+								<button id="btn_add_product" class="form_button"><i class="fa-solid fa-plus"></i></button>
+							</div>
+						</div>
+						<table>
+							<thead>
+								<tr>
+									<td>Stt</td>
+									<td>Số điện thoại</td>
+									<td>Họ tên</td>
+									<td>Ngày tạo</td>
+									<td>Chức năng</td>
+								</tr>
+							</thead>
+							<tbody id="tbody"></tbody>
+						</table>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div id="model_employee" class="model">
+		<div id="model">
+			<button id="btn_close_model" class="button_close form_button_close">X</button>
+			<p id="msg"></p>
+			<div>
+				<label for="ten">Tên nhân viên: </label>
+				<input type="text" id="ten" placeholder="Nhập tên nhân viên" required>
+			</div>
+			<div>
+				<label for="sodt">Số điện thoại: </label>
+				<input type="number" id="sodt" placeholder="Nhập số điện thoại" required>
+			</div>
+			<div>
+				<label for="matkhau">Mật khẩu: </label>
+				<input type="password" id="matkhau" placeholder="Nhập mật khẩu" required>
+			</div>
+			<div style="display: flex; justify-content: center">
+				<button id="btn_add" class="btn_add form_button">Thêm</button>
+				<button id="btn_update" class="btn_update form_button">Cập nhật</button>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Hóa đơn</title>
+<link rel="stylesheet" type="text/css" href="/css/style.css">
+<link rel="stylesheet" type="text/css" href="/css/header.css">
+<link rel="stylesheet" type="text/css" href="/css/menuLeft.css">
+<link rel="stylesheet" type="text/css" href="/css/formDefault.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="/js/index.js"></script>
+<script src="/js/order.js"></script>
+<style>
+	#wrapper_category {
+		width: 80%;
+    	grid-template-columns: repeat(6, 1fr);
+	}
+	
+	.item_category:active {
+    	transform: scale(1);
+	}
+	
+	.item_category{
+		text-align: center;
+		position: relative;
+		max-height: 6vh;
+	}
+	
+	.item_category:hover{
+		color: black;
+		background-color: white;
+	}
+	
+	.item_category>button{
+		position: absolute;
+		cursor: pointer;
+		border: none;
+		top: .6rem;
+		right: 1rem;
+		width: 2.5vh;
+		height: 2.5vh;
+		color: white;
+		background-color: #2654D6;
+		border-radius: 100%;
+		transition: .1s;
+	}
+	
+	.item_category>button:hover{
+		background-color: #D64646;
+	}
+	
+	.item_category>button:active{
+		transform: scale(0.9);
+	}
+	
+	tbody>tr>td:nth-of-type(2){
+		max-width: 10vh;
+	}
+
+	.item_img>img{
+		width: 10vh;
+		height: 10vh;
+		object-fit: cover;
+	}
+	
+	#model label,
+	#model>div>p{
+		font-weight: 600;
+		margin-bottom: .2rem;
+	}
+	
+	#model p{
+		text-align: center;
+	}
+	
+	#model>div>label {
+    	width: 30vh !important;
+	}
+	
+	#model>div{
+		margin: 0rem 1rem;
+		display: flex;
+    	justify-content: flex-start;
+	}
+	
+	#table_infor{
+		width: 100%;
+	}
+	
+	#model>div>input {
+    	border: none;
+    }
+    
+    #table_infor>thead>tr>td{
+		border-bottom: 2px dashed gray; 
+		padding-bottom: .2rem;
+		font-weight: 600;
+	}
+	
+	#table_infor>tbody>tr:last-child>td {
+		border-bottom: 2px dashed gray; 
+	}
+	
+	#wrapper_bill{
+		max-height: 55vh;
+		overflow: auto;
+    	padding-top: 3rem;
+	}
+	
+	.item_order:hover{
+		cursor: pointer;
+		background-color: whitesmoke;
+	}
+	
+	#wrapper_menu>table>tbody>tr:nth-child(even) {
+  		background-color: #f2f2f2;
+	}
+</style>
+</head>
+<body>
+	<div id="container">
+		<div th:replace="views/menuLeft"></div>
+		<div id="container_header_body">
+			<div th:replace="views/header"></div>
+				<div id="wrapper">
+					<div id="wrapper_menu">
+						<div id="wrapper_title_search">
+							<h2>Hóa đơn</h2>
+							<div>
+								<input type="text" id="tongtien" class="form_input_search" placeholder="Tổng tiền..." readonly>
+								<input type="text" id="timkiem_trangchu" class="form_input_search" placeholder="Tìm theo tên...">
+							</div>
+						</div>
+						<table>
+							<thead>
+								<tr>
+									<td>Stt</td>
+									<td>Ngày tạo</td>
+									<td>Số điện thoại</td>
+									<td>Họ tên</td>
+									<td>Điểm tích lũy đã dùng</td>
+									<td>Thanh toán</td>
+								</tr>
+							</thead>
+							<tbody id="tbody_list_hoadon">
+								<tr class="item_order">
+									<td>1</td>
+									<td>Ngày tạo</td>
+									<td>Số điện thoại</td>
+									<td>Họ tên</td>
+									<td>Điểm tích lũy đã dùng</td>
+									<td>Thanh toán</td>
+								</tr>
+								<tr class="item_order">
+									<td>2</td>
+									<td>Ngày tạo</td>
+									<td>Số điện thoại</td>
+									<td>Họ tên</td>
+									<td>Điểm tích lũy đã dùng</td>
+									<td>Thanh toán</td>
+								</tr>
+								<tr class="item_order">
+									<td>3</td>
+									<td>Ngày tạo</td>
+									<td>Số điện thoại</td>
+									<td>Họ tên</td>
+									<td>Điểm tích lũy đã dùng</td>
+									<td>Thanh toán</td>
+								</tr>
+								<tr class="item_order">
+									<td>4</td>
+									<td>Ngày tạo</td>
+									<td>Số điện thoại</td>
+									<td>Họ tên</td>
+									<td>Điểm tích lũy đã dùng</td>
+									<td>Thanh toán</td>
+								</tr>
+							</tbody>
+						</table>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div id="model_order" class="model">
+		<div id="model">
+			<button id="btn_close_model" class="form_button_close">X</button>
+			<p>Chi tiết hóa đơn</p>
+			<div>
+				<label for="sodt">Tên khách hàng: </label>
+				<input type="text" id="tenkhachhang" readonly>
+			</div>
+			<div>
+				<label for="sodt">Điểm tích lũy hiện tại: </label>
+				<input type="text" id="diemtichluy" readonly>
+			</div>
+			<div>
+				<label for="sodt">Điểm tích lũy nhận được: </label>
+				<input type="text" id="diemnhanduoc" readonly>
+			</div>
+			<div>
+				<label for="sodt">Điểm thanh toán: </label>
+				<input type="text" id="diemthanhtoan" readonly>
+			</div>
+			<div>
+				<label for="tenkhachhang">Nhân viên: </label>
+				<input type="text" id="tennhanvien" readonly>
+			</div>
+			<div id="wrapper_bill">
+				<table id="table_infor">
+					<thead>
+						<tr>
+							<td style="text-align: left; max-width: 5vh;">Tên món</td>
+							<td style="text-align: center">Số lượng</td>
+							<td style="text-align: center">Giá</td>
+							<td style="text-align: end">Tổng tiền</td>
+						</tr>
+					</thead>
+					<tbody id="tbody_infor">
+					</tbody>
+				</table>
+			</div>
+			<div>
+				<p>Tổng tiền: </p>
+				<p style="font-weight: 600" id="totalAmount"></p>
+			</div>
+			<div>
+				<p>Tổng tiền cần trả: </p>
+				<p style="font-weight: 600" id="totalAmountCurrent"></p>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
